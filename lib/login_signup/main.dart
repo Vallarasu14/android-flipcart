@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttercart_sample/databasehandler/dbhandler.dart';
-import 'package:fluttercart_sample/pages/shopping.dart';
+import 'package:fluttercart_sample/databasehandler/dbhelper.dart';
+import 'package:fluttercart_sample/pages/home_page.dart';
 import 'package:fluttercart_sample/login_signup/signup_page.dart';
 
 import '../email_validator.dart';

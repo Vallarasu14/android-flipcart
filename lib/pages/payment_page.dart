@@ -13,7 +13,7 @@ class _Payment_PageState extends State<Payment_Page> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Payment'),
+          title: const Text('PAYMENT'),
         ),
       ),
     );

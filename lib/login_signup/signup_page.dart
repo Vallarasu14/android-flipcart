@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttercart_sample/databasehandler/dbhandler.dart';
+import 'package:fluttercart_sample/databasehandler/dbhelper.dart';
 import '../email_validator.dart';
 import 'main.dart';
 import '../model/user_model.dart';

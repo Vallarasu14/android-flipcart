@@ -1,19 +1,22 @@
 class CartModel {
-
   late String title;
   late double price;
   late String image;
   late int quantity;
+  late int id;
 
 
-  CartModel(this.title, this.image, this.price, this.quantity);
+
+  CartModel(this.title, this.image, this.price, this.quantity,this.id);
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       'title': title,
       'quantity': quantity,
       'price': price,
-      'image': image
+      'image': image,
+      'id':id
+
     };
     return map;
   }
@@ -23,5 +26,6 @@ class CartModel {
     price = map['price'];
     image = map['image'];
     quantity = map['quantity'];
+    id = map['id'];
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:async';
 import 'dart:io' as io;
 import 'package:fluttercart_sample/model/cart_model.dart';
 import 'package:fluttercart_sample/model/user_model.dart';
@@ -18,7 +20,7 @@ class DbHelper {
   static const String C_Password = 'password';
 
   static const String Table_Cart = 'Cart';
-  static const String C_ID = 'cartid';
+  static const String C_ID = 'id';
   static const String C_Title = 'title';
   static const String C_Price = 'price';
   static const String C_Image = 'image';
@@ -65,12 +67,12 @@ class DbHelper {
 
   Future<UserModel?> getLoginUser(String email, String password) async {
     var dbClient = await db;
-    var res = await dbClient.rawQuery("SELECT * FROM $Table_User WHERE "
+    var result = await dbClient.rawQuery("SELECT * FROM $Table_User WHERE "
         "$C_Email = '$email' AND "
         "$C_Password = '$password'");
 
-    if (res.length > 0) {
-      return UserModel.fromMap(res.first);
+    if (result.isNotEmpty) {
+      return UserModel.fromMap(result.first);
     }
 
     return null;
@@ -98,13 +100,19 @@ class DbHelper {
         maps[i]['image'],
         maps[i]['price'],
         maps[i]['quantity'],
+        maps[i]['id']
       );
     });
   }
 
   Future<dynamic> deleteProduct(int id) async {
     var dbClient = await db;
-     var result = await dbClient.delete('DELETE FROM $Table_Cart WHERE $C_ID =$id');
+     var result = await dbClient.delete('Table_Cart',where: 'id =?',whereArgs: [id]);
     return result;
+  }
+
+  Future<void> updateProduct(CartModel cart) async {
+    var dbClient = await db;
+    var result = await dbClient.update('Table_Cart',cart.toMap(),where: 'id =?',whereArgs: [cart.id]);
   }
 }

@@ -2,7 +2,7 @@
 class Product {
    final int id;
    final String title;
-    var price;
+   var price;
    final String image;
 
   Product( {

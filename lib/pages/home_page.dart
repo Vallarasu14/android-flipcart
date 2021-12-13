@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttercart_sample/databasehandler/dbhandler.dart';
+import 'package:fluttercart_sample/databasehandler/dbhelper.dart';
 import 'package:fluttercart_sample/model/cart_model.dart';
 import 'package:fluttercart_sample/pages/cart_page.dart';
 import 'package:fluttercart_sample/model/product_mode.dart';
@@ -57,7 +57,7 @@ class _ShoppingState extends State<Shopping> {
                 width: 15,
               ),
             ],
-            title: const Text('Home'),
+            title: const Text('HOME'),
           ),
           drawer: Drawer(
             child: Column(
@@ -153,13 +153,19 @@ class _ShoppingState extends State<Shopping> {
                                   onPressed: () {
                                     setState(() {
                                       var dbHelper = DbHelper();
-                                      CartModel cModel = CartModel(product[index].title,product[index].image,product[index].price,1);
+                                      CartModel cModel = CartModel(product[index].title,product[index].image,product[index].price,1,product[index].id);
                                       dbHelper.addToCart(cModel);
                                       final snackBar = SnackBar(
                                         content: Text(product[index].title),
-                                        duration: const Duration(seconds: 3),
+                                        duration: const Duration(seconds: 5),
                                         action: SnackBarAction(
-                                          label: 'ok', onPressed: () {  },
+                                          textColor: Colors.deepOrange,
+                                          label: 'Goto Cart',
+                                          onPressed: () {
+                                            setState(() {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>const CartPage()));
+                                            });
+                                        },
                                         ),
                                       );
                                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

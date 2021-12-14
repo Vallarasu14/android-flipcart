@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                           fontWeight: FontWeight.bold,
                           fontSize: MediaQuery.of(context).size.height / 35),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Padding(
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(18))),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 35,
                     ),
                     Padding(
@@ -136,12 +136,17 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         FlatButton(
-                            onPressed: () {}, child: Text('Forgot Password')),
+                            onPressed: () {}, child: const Text('Forgot Password')),
                       ],
                     ),
                     RaisedButton(
-                      onPressed: logIn,
-                      child: Text(
+                      onPressed: (){
+                        setState(() {
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => const Shopping()));
+                        });
+                      },
+                      child: const Text(
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -149,13 +154,13 @@ class _LoginPageState extends State<LoginPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18)),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('No Account Yet?'),
+                          const Text('No Account Yet?'),
                           FlatButton(
                               onPressed: () {
                                 setState(() {
@@ -163,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                                       builder: (context) => Signup_Page()));
                                 });
                               },
-                              child: Text(
+                              child: const Text(
                                 'Create Account',
                                 style: TextStyle(color: Colors.blue),
                               ))

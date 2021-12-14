@@ -4,10 +4,9 @@ class CartModel {
   late String image;
   late int quantity;
   late int id;
+  late double payableAmnt;
 
-
-
-  CartModel(this.title, this.image, this.price, this.quantity,this.id);
+  CartModel(this.title, this.image, this.price, this.quantity, this.id);
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
@@ -15,8 +14,7 @@ class CartModel {
       'quantity': quantity,
       'price': price,
       'image': image,
-      'id':id
-
+      'id': id
     };
     return map;
   }

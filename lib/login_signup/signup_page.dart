@@ -34,12 +34,9 @@ class _Signup_PageState extends State<Signup_Page> {
       _formKey.currentState!.save();
       UserModel uModel = UserModel(username, passwrd, email);
       await dbHelper.saveData(uModel);
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
-    }
-    else{
-
-
-    }
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    } else {}
   }
 
   @override
@@ -79,7 +76,8 @@ class _Signup_PageState extends State<Signup_Page> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.blue,
-                              fontSize: MediaQuery.of(context).size.height / 35),
+                              fontSize:
+                                  MediaQuery.of(context).size.height / 35),
                         ),
                         SizedBox(
                           height: 25,
@@ -90,8 +88,9 @@ class _Signup_PageState extends State<Signup_Page> {
                             controller: _userName,
                             keyboardType: TextInputType.name,
                             obscureText: false,
-                            validator: (val) =>
-                                val!.length == 0 ? "please enter username" : null,
+                            validator: (val) => val!.length == 0
+                                ? "please enter username"
+                                : null,
                             decoration: InputDecoration(
                                 labelText: 'Username',
                                 prefixIcon: Icon(Icons.person),
@@ -134,8 +133,9 @@ class _Signup_PageState extends State<Signup_Page> {
                             controller: _password,
                             keyboardType: TextInputType.name,
                             obscureText: true,
-                            validator: (val) =>
-                                val!.length == 0 ? "please enter password" : null,
+                            validator: (val) => val!.length == 0
+                                ? "please enter password"
+                                : null,
                             decoration: InputDecoration(
                                 labelText: 'Password',
                                 prefixIcon: Icon(Icons.lock),

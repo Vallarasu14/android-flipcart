@@ -61,7 +61,6 @@ class DbHelper {
   Future<int> saveData(UserModel user) async {
     var dbClient = await db;
     var result = await dbClient.insert(Table_User, user.toMap());
-    print(result);
     return result;
   }
 
@@ -84,7 +83,6 @@ class DbHelper {
     var dbClient = await db;
     var result = await dbClient.insert(Table_Cart, cart.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
-    print(result);
     return result;
   }
 
@@ -95,24 +93,21 @@ class DbHelper {
 
     // Convert the List<Map<String, dynamic> into a List<CartModel>.
     return List.generate(maps.length, (i) {
-      return CartModel(
-        maps[i]['title'],
-        maps[i]['image'],
-        maps[i]['price'],
-        maps[i]['quantity'],
-        maps[i]['id']
-      );
+      return CartModel(maps[i]['title'], maps[i]['image'], maps[i]['price'],
+          maps[i]['quantity'], maps[i]['id']);
     });
   }
 
   Future<dynamic> deleteProduct(int id) async {
     var dbClient = await db;
-     var result = await dbClient.delete('Table_Cart',where: 'id =?',whereArgs: [id]);
+    var result =
+        await dbClient.delete(Table_Cart, where: 'id =?', whereArgs: [id]);
     return result;
   }
 
   Future<void> updateProduct(CartModel cart) async {
     var dbClient = await db;
-    var result = await dbClient.update('Table_Cart',cart.toMap(),where: 'id =?',whereArgs: [cart.id]);
+    var result = await dbClient.update(Table_Cart, cart.toMap(),
+        where: 'id =?', whereArgs: [cart.id]);
   }
 }
